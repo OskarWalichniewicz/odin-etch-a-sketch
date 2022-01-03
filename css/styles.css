@@ -4,3 +4,41 @@
   --tertiary: #ffc478;
   --quaternary: #75cfb8;
 }
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: var(--main);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  overflow: hidden;
+  height: 100%;
+}
+
+#menu_container,
+#main_container {
+  background-color: var(--secondary);
+  border-radius: 10px;
+  height: 75%;
+}
+
+#menu_container {
+  margin-left: 10%;
+  width: 20%;
+}
+
+#main_container {
+  margin-right: 10%;
+  width: 50%;
+}
+
+#vertical_line {
+  height: 85%;
+  width: 2px;
+  border-radius: 50%;
+  background-color: var(--quaternary);
+}
