@@ -12,11 +12,21 @@ html {
 body {
   background-color: var(--main);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 
   overflow: hidden;
   height: 100%;
+}
+
+#title {
+  text-align: center;
+  font-size: 60px;
+}
+
+#main_window {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
 }
 
 #menu_container,
@@ -33,7 +43,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 #main_container {
@@ -54,14 +64,16 @@ body {
   height: 10%;
   width: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 15px;
 }
 
 #slider {
   -webkit-appearance: none;
 
-  width: 60%;
+  min-width: 60%;
+  max-width: 60%;
+  margin-left: 20px;
 
   height: 3px;
   background: white;
@@ -70,13 +82,48 @@ body {
 #slider_text {
   font-size: 23px;
   color: black;
+  margin-right: 20px;
 }
 
-#menu_container button {
-  width: 80%;
+#color_container {
+  width: 50%;
+  height: 10%;
+  border-radius: 10%;
+  display: inline-block;
+  background: #000000;
+}
+
+input[type="color"] {
+  display: none;
+}
+
+input[type="checkbox"] {
+  all: unset;
+  -webkit-appearance: none;
+}
+
+button,
+input[type="checkbox"] + label {
+  width: 60%;
   height: 10%;
   background-color: var(--tertiary);
-  border: solid var(--quaternary) 1px;
+  border: solid var(--quaternary) 2px;
   border-radius: 20px;
   font-size: 15px;
+  font-family: Arial;
+}
+
+label {
+  /* Makes text non-selectable */
+  user-select: none;
+}
+
+input[type="checkbox"] + label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="checkbox"]:checked + label {
+  background-color: #f78d32;
 }

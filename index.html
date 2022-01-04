@@ -8,24 +8,34 @@
   </head>
 
   <body>
-    <div id="menu_container">
+    <h1 id="title">Etch-a-Sketch</h1>
 
-      <div id="slider_and_text">
-        <input type="range" min="1" max="100" value="16" 
-          id="slider" id="myRange">
-        <div id="slider_text">16 x 16</div>
+    <div id="main_window">
+      <div id="menu_container">
+
+        <div id="slider_and_text">
+          <input type="range" min="1" max="100" value="16" 
+              id="slider" id="myRange">
+          <div id="slider_text">16x16</div>
+        </div>
+
+        <span id="color_container"></span>
+        <input type="color" value="#000000" id="color_picker"></input>
+        <input type="checkbox" id="btn_color" class="type"></input>
+        <label for="btn_color">Color Mode</label>
+        <input type="checkbox" id="btn_rainbow" class="type"></input>
+        <label for="btn_rainbow">Rainbow Mode</label>
+        <input type="checkbox" id="btn_eraser" class="type"></input>
+        <label for="btn_eraser">Eraser</label>
+        <button id="btn_clear">Clear</button>
+
       </div>
 
-      <button id="btn_black">Black Color</button>
-      <button id="btn_rainbow">Rainbow Mode</button>
-      <button id="btn_clear">Clear</button>
+      <div id="vertical_line"></div>
 
-    </div>
+      <div id="main_container">
 
-    <div id="vertical_line"></div>
-
-    <div id="main_container">
-
+      </div>
     </div>
   </body>
 </html>
