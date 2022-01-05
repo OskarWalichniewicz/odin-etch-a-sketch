@@ -46,11 +46,6 @@ body {
   justify-content: space-evenly;
 }
 
-#main_container {
-  margin-right: 10%;
-  width: 50%;
-}
-
 #vertical_line {
   height: 85%;
   width: 2px;
@@ -102,6 +97,8 @@ input[type="checkbox"] {
   -webkit-appearance: none;
 }
 
+/* input[type="checkbox"] + label = label that is right after
+   input checkbox */
 button,
 input[type="checkbox"] + label {
   width: 60%;
@@ -113,17 +110,22 @@ input[type="checkbox"] + label {
   font-family: Arial;
 }
 
-label {
-  /* Makes text non-selectable */
-  user-select: none;
-}
-
 input[type="checkbox"] + label {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Makes text non-selectable */
+  user-select: none;
 }
 
+/* Checked checbox (label that comes immidiately after) */
 input[type="checkbox"]:checked + label {
-  background-color: #f78d32;
+  background-color: black;
+  color: white;
+}
+
+#main_container {
+  margin-right: 10%;
+  width: 50%;
+  display: grid;
 }

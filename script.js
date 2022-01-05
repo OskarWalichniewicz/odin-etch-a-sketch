@@ -34,3 +34,18 @@ checkboxes.forEach((checkbox) => {
     checkbox.checked = true;
   });
 });
+
+function createGrid(size) {
+  let parentDiv = document.querySelector("#main_container");
+  parentDiv.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
+  for(let i = 0; i < size ** 2; i++) {
+      let childDiv = document.createElement("div");
+      parentDiv.appendChild(childDiv);
+    }
+  }
+
+createGrid(16);
+
+// var randomColor = Math.floor(Math.random()*16777215).toString(16);
+// childDiv.style.backgroundColor = `#${randomColor}`;
