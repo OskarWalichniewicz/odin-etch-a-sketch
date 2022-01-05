@@ -6,6 +6,47 @@ let slider_text = document.querySelector("#slider_text");
 
 let checkboxes = document.querySelectorAll(".type");
 
+let btn_color = document.querySelector("#btn_color");
+let btn_rainbow = document.querySelector("#btn_rainbow");
+let btn_eraser = document.querySelector("#btn_eraser");
+
+let btn_clear = document.querySelector("#btn_clear");
+
+/**
+ * @param  {int} size - How many columns and rows will be created
+ * 
+ * Creates divs and puts them in #main_container, with {size} columns and rows
+ */
+ function createGrid(size) {
+  let parentDiv = document.querySelector("#main_container");
+  parentDiv.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
+  for(let i = 0; i < size ** 2; i++) {
+    let childDiv = document.createElement("div");
+      childDiv.addEventListener("mouseover", function() {
+        if(btn_color.checked === true) {
+          childDiv.style.backgroundColor = color_input.value;
+        }
+        if(btn_rainbow.checked === true) {
+          let randomColor = Math.floor(Math.random()*16777215).toString(16);
+          childDiv.style.backgroundColor = `#${randomColor}`;
+        }
+        if(btn_eraser.checked === true) {
+          childDiv.style.backgroundColor = '#bbdfc8';
+        }
+      });
+    parentDiv.appendChild(childDiv);
+  }
+}
+
+// Removes all child elements of main_container
+function removeGrid () {
+  let parentDiv = document.querySelector("#main_container");
+  while (parentDiv.firstChild) {
+    parentDiv.removeChild(parentDiv.lastChild);
+  }
+}
+
 // When you click span (color container), you open hidden color picker (input)
 color_span.addEventListener("click", function() {
   color_input.click();
@@ -35,17 +76,18 @@ checkboxes.forEach((checkbox) => {
   });
 });
 
-function createGrid(size) {
-  let parentDiv = document.querySelector("#main_container");
-  parentDiv.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+// On slider value change, it changes the grid size (removes old & creates new one)
+slider.addEventListener("input", function() {
+  removeGrid();
+  createGrid(slider.value);
+})
 
-  for(let i = 0; i < size ** 2; i++) {
-      let childDiv = document.createElement("div");
-      parentDiv.appendChild(childDiv);
-    }
-  }
+/* On button 'Clear' click, removes all child nodes of main 
+   container and creates new one with current slider_value */
+btn_clear.addEventListener("click", function () {
+  removeGrid();
+  createGrid(slider.value);
+});
 
-createGrid(16);
-
-// var randomColor = Math.floor(Math.random()*16777215).toString(16);
-// childDiv.style.backgroundColor = `#${randomColor}`;
+// Creates grid with initial value on page open
+createGrid(slider.value);
